@@ -719,12 +719,12 @@
               <div class="story-author-row">
                 <div class="story-author-left">
                   <div class="story-author-avatar-wrap">
-                    <img src="assets/avatar.png" alt="Avatar" class="story-author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\' fill=\'%23555\'><circle cx=\'16\' cy=\'16\' r=\'16\'/><circle cx=\'16\' cy=\'12\' r=\'6\' fill=\'%23fff\'/><path d=\'M6 28c0-6 4-9 10-9s10 3 10 9\' fill=\'%23fff\'/></svg>'">
-                    <div class="story-avatar-plus-badge">+</div>
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='40' fill='%232a2f45'/><circle cx='40' cy='30' r='14' fill='%2394a3b8'/><path d='M16 68c0-13.255 10.745-24 24-24s24 10.745 24 24' fill='%2394a3b8'/></svg>" alt="Avatar" id="sm-author-avatar-img" class="story-author-avatar">
+                    <div class="story-avatar-plus-badge" id="sm-avatar-plus-badge">+</div>
                   </div>
                   <div class="story-author-info">
                     <div class="story-author-title-line">
-                      <span class="story-author-name">Your story</span>
+                      <span class="story-author-name" id="sm-author-name-display">Your story</span>
                       <span class="story-time-elapsed" id="story-time-elapsed-display">12h</span>
                     </div>
                     <!-- Music Ticker -->
@@ -849,6 +849,55 @@
       <!-- RIGHT CONTROLS PANE -->
       <section class="control-pane">
 
+        <!-- Story Author Profile Card -->
+        <div class="ctrl-section-card">
+          <div class="ctrl-card-header">
+            <span class="ctrl-card-title">
+              <span class="ctrl-title-icon">👤</span>
+              <span>Story Author & Profile Photo</span>
+            </span>
+          </div>
+          <div class="ctrl-card-body">
+            <div class="form-group">
+              <label class="form-label">Upload Profile Photo (Avatar)</label>
+              <div style="display:flex; align-items:center; gap:16px; margin-top:4px;">
+                <div style="position:relative; width:54px; height:54px; flex-shrink:0;">
+                  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='40' fill='%232a2f45'/><circle cx='40' cy='30' r='14' fill='%2394a3b8'/><path d='M16 68c0-13.255 10.745-24 24-24s24 10.745 24 24' fill='%2394a3b8'/></svg>" id="sm-avatar-preview-thumb" alt="" style="width:54px; height:54px; border-radius:50%; object-fit:cover; border:2px solid #3b82f6; box-shadow:0 0 14px rgba(59,130,246,0.35);">
+                </div>
+                <div style="flex:1;">
+                  <input type="file" class="form-input" id="sm-input-avatar-upload" accept="image/*">
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 12px;">
+              <label class="form-label">Sample Brand Avatars</label>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-avatar-reliance">🏬 Reliance Digital</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-avatar-vigor">⚡ Vigor Space</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-avatar-user">👤 User Avatar</button>
+              </div>
+            </div>
+            <div class="form-grid-2" style="margin-top: 14px;">
+              <div class="form-group">
+                <label class="form-label">Account / Story Name</label>
+                <input type="text" class="form-input" id="sm-input-author-name" value="Your story" placeholder="e.g. Your story or brand name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Blue Plus Badge (+)</label>
+                <div class="segmented-control" data-sync="sm-select-plus-badge">
+                  <button type="button" class="seg-btn active" data-val="show">👁️ Show (+)</button>
+                  <button type="button" class="seg-btn" data-val="hide">🚫 Hide</button>
+                </div>
+                <select id="sm-select-plus-badge" class="form-select" style="display:none;">
+                  <option value="show">Show</option>
+                  <option value="hide">Hide</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Creative Photo Card -->
         <div class="ctrl-section-card">
           <div class="ctrl-card-header">
             <span class="ctrl-card-title">

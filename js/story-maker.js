@@ -117,6 +117,70 @@ function initStoryMaker() {
     });
   }
 
+  // Avatar & Author Elements
+  const authorAvatarImg = document.getElementById('sm-author-avatar-img');
+  const avatarPreviewThumb = document.getElementById('sm-avatar-preview-thumb');
+  const avatarPlusBadge = document.getElementById('sm-avatar-plus-badge');
+  const authorNameDisplay = document.getElementById('sm-author-name-display');
+
+  const inputAvatarUpload = document.getElementById('sm-input-avatar-upload');
+  const inputAuthorName = document.getElementById('sm-input-author-name');
+  const selectPlusBadge = document.getElementById('sm-select-plus-badge');
+
+  const btnAvatarReliance = document.getElementById('btn-avatar-reliance');
+  const btnAvatarVigor = document.getElementById('btn-avatar-vigor');
+  const btnAvatarUser = document.getElementById('btn-avatar-user');
+
+  // Avatar Upload Listener
+  if (inputAvatarUpload) {
+    inputAvatarUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          if (authorAvatarImg) authorAvatarImg.src = evt.target.result;
+          if (avatarPreviewThumb) avatarPreviewThumb.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  // Quick Avatar Buttons
+  if (btnAvatarReliance) {
+    btnAvatarReliance.addEventListener('click', () => {
+      const src = 'assets/reliance_digital_story.png';
+      if (authorAvatarImg) authorAvatarImg.src = src;
+      if (avatarPreviewThumb) avatarPreviewThumb.src = src;
+      if (inputAuthorName) {
+        inputAuthorName.value = 'reliance_digital';
+        updateStoryCanvas();
+      }
+    });
+  }
+  if (btnAvatarVigor) {
+    btnAvatarVigor.addEventListener('click', () => {
+      const src = 'assets/verified.png';
+      if (authorAvatarImg) authorAvatarImg.src = src;
+      if (avatarPreviewThumb) avatarPreviewThumb.src = src;
+      if (inputAuthorName) {
+        inputAuthorName.value = 'vigorspace';
+        updateStoryCanvas();
+      }
+    });
+  }
+  if (btnAvatarUser) {
+    btnAvatarUser.addEventListener('click', () => {
+      const src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='40' fill='%232a2f45'/><circle cx='40' cy='30' r='14' fill='%2394a3b8'/><path d='M16 68c0-13.255 10.745-24 24-24s24 10.745 24 24' fill='%2394a3b8'/></svg>";
+      if (authorAvatarImg) authorAvatarImg.src = src;
+      if (avatarPreviewThumb) avatarPreviewThumb.src = src;
+      if (inputAuthorName) {
+        inputAuthorName.value = 'Your story';
+        updateStoryCanvas();
+      }
+    });
+  }
+
   // Helper to format @mentions with <u> underline
   function formatMentions(text) {
     if (!text) return '';
@@ -125,6 +189,12 @@ function initStoryMaker() {
 
   // Update Story Canvas
   function updateStoryCanvas() {
+    if (authorNameDisplay && inputAuthorName) {
+      authorNameDisplay.textContent = inputAuthorName.value || 'Your story';
+    }
+    if (avatarPlusBadge && selectPlusBadge) {
+      avatarPlusBadge.style.display = selectPlusBadge.value === 'show' ? 'flex' : 'none';
+    }
     if (storyCaption && inputCaption) {
       storyCaption.innerHTML = formatMentions(inputCaption.value).replace(/\n/g, '<br>');
     }
@@ -169,6 +239,8 @@ function initStoryMaker() {
   }
 
   // Event Listeners
+  if (inputAuthorName) inputAuthorName.addEventListener('input', updateStoryCanvas);
+  if (selectPlusBadge) selectPlusBadge.addEventListener('change', updateStoryCanvas);
   if (inputCaption) inputCaption.addEventListener('input', updateStoryCanvas);
   if (togglePillBackdrop) togglePillBackdrop.addEventListener('change', updateStoryCanvas);
   if (inputFloatingTag) inputFloatingTag.addEventListener('input', updateStoryCanvas);
