@@ -90,6 +90,32 @@
     setVal('input-stat-reached',            state.stats.reached);
     setVal('input-stat-likes',              state.stats.likes);
     setVal('input-stat-replies',            state.stats.replies);
+    syncSegmentedButtons();
+  }
+
+  function syncSegmentedButtons() {
+    document.querySelectorAll('.segmented-control[data-sync]').forEach(seg => {
+      const targetId = seg.getAttribute('data-sync');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        seg.querySelectorAll('.seg-btn').forEach(btn => {
+          if (btn.getAttribute('data-val') === targetEl.value) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    });
+
+    const b = document.getElementById('badge-battery-val');
+    if (b) b.textContent = `${state.statusBar.battery}%`;
+    const s = document.getElementById('badge-signal-val');
+    if (s) s.textContent = `${state.statusBar.signal} / 4`;
+    const f = document.getElementById('badge-followers-pct');
+    if (f) f.textContent = `${state.stats.followersPct}%`;
+    const nf = document.getElementById('badge-nonfollowers-pct');
+    if (nf) nf.textContent = `${state.stats.nonfollowersPct}%`;
   }
 
   function setVal(id, v) { const el = document.getElementById(id); if (el) el.value = v; }
@@ -232,6 +258,60 @@
     const radioViewers = document.getElementById('radio-mode-viewers');
     if (radioStats)   radioStats.addEventListener('change',   () => switchMockupTab('stats'));
     if (radioViewers) radioViewers.addEventListener('change', () => switchMockupTab('viewers'));
+
+    // Modern Segmented Controls
+    document.querySelectorAll('.segmented-control').forEach(seg => {
+      const syncTargetId = seg.getAttribute('data-sync');
+      const radioName = seg.getAttribute('data-radio');
+
+      seg.querySelectorAll('.seg-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          seg.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          if (syncTargetId) {
+            const target = document.getElementById(syncTargetId);
+            if (target) {
+              target.value = btn.getAttribute('data-val');
+              target.dispatchEvent(new Event('change'));
+            }
+          }
+
+          if (btn.id === 'btn-seg-stats') {
+            switchMockupTab('stats');
+          } else if (btn.id === 'btn-seg-viewers') {
+            switchMockupTab('viewers');
+          }
+        });
+      });
+    });
+
+    // Dynamic Live Value Badges
+    const batSlider = document.getElementById('slider-battery');
+    if (batSlider) {
+      batSlider.addEventListener('input', e => {
+        const b = document.getElementById('badge-battery-val');
+        if (b) b.textContent = `${e.target.value}%`;
+      });
+    }
+
+    const sigSlider = document.getElementById('slider-signal');
+    if (sigSlider) {
+      sigSlider.addEventListener('input', e => {
+        const b = document.getElementById('badge-signal-val');
+        if (b) b.textContent = `${e.target.value} / 4`;
+      });
+    }
+
+    const folInput = document.getElementById('input-donut-followers');
+    if (folInput) {
+      folInput.addEventListener('input', e => {
+        const b = document.getElementById('badge-followers-pct');
+        if (b) b.textContent = `${e.target.value}%`;
+        const nb = document.getElementById('badge-nonfollowers-pct');
+        if (nb) nb.textContent = `${(100 - parseFloat(e.target.value || 0)).toFixed(1)}%`;
+      });
+    }
   }
 
   function bind(id, cb) {

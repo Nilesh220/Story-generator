@@ -379,166 +379,278 @@
     <section class="control-dashboard">
 
       <nav class="control-nav-tabs">
-        <button class="ctrl-tab-btn active" data-tab="general">Device</button>
-        <button class="ctrl-tab-btn" data-tab="story">Story</button>
-        <button class="ctrl-tab-btn" data-tab="stats">Stats</button>
-        <button class="ctrl-tab-btn" data-tab="viewers">Viewers</button>
-      </nav>
+          <button class="ctrl-tab-btn active" data-tab="general">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <span>Device</span>
+          </button>
+          <button class="ctrl-tab-btn" data-tab="story">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Story</span>
+          </button>
+          <button class="ctrl-tab-btn" data-tab="stats">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Stats</span>
+          </button>
+          <button class="ctrl-tab-btn" data-tab="viewers">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Viewers</span>
+          </button>
+        </nav>
 
-      <!-- Device Tab -->
-      <div class="ctrl-tab-content" id="ctrl-panel-general">
-        <div class="ctrl-section-card">
-          <div class="ctrl-card-header"><span class="ctrl-card-title">📱 Display</span></div>
-          <div class="ctrl-card-body">
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Phone Model</label>
-                <select id="select-phone-model-ctrl" class="form-select">
-                  <option value="size-iphone14">iPhone 14/13</option>
-                  <option value="size-iphone16">iPhone 16/15 Pro</option>
-                  <option value="size-promax">Pro Max</option>
-                  <option value="size-android">Galaxy S24</option>
-                </select>
+        <!-- Device Tab -->
+        <div class="ctrl-tab-content" id="ctrl-panel-general">
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">📱</span>
+                <span>Display & Device Theme</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Phone Model</label>
+                  <select id="select-phone-model-ctrl" class="form-select">
+                    <option value="size-iphone14">iPhone 14/13 (390×844)</option>
+                    <option value="size-iphone16">iPhone 16/15 Pro (393×852)</option>
+                    <option value="size-promax">iPhone 15 Pro Max (430×932)</option>
+                    <option value="size-android">Galaxy S24 (360×800)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Theme Mode</label>
+                  <div class="segmented-control" data-sync="select-theme-mode">
+                    <button type="button" class="seg-btn active" data-val="light">☀️ Light</button>
+                    <button type="button" class="seg-btn" data-val="dark">🌙 Dark</button>
+                  </div>
+                  <select id="select-theme-mode" class="form-select" style="display:none;">
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label">Active Sheet Tab</label>
+                  <div class="segmented-control" data-radio="radio-mode-tab">
+                    <button type="button" class="seg-btn active" id="btn-seg-stats">📊 Stats Tab (Chart & Insights)</button>
+                    <button type="button" class="seg-btn" id="btn-seg-viewers">👥 Viewers Tab (List & Reactions)</button>
+                  </div>
+                  <div style="display:none;">
+                    <input type="radio" name="radio-mode-tab" id="radio-mode-stats" checked>
+                    <input type="radio" name="radio-mode-tab" id="radio-mode-viewers">
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Theme Mode</label>
-                <select id="select-theme-mode" class="form-select">
-                  <option value="light">Light Mode</option>
-                  <option value="dark">Dark Mode</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Active Tab</label>
-                <div style="display:flex;gap:14px;align-items:center;margin-top:6px;">
-                  <label style="display:flex;gap:6px;align-items:center;font-size:13px;"><input type="radio" name="radio-mode-tab" id="radio-mode-stats" checked> Stats</label>
-                  <label style="display:flex;gap:6px;align-items:center;font-size:13px;"><input type="radio" name="radio-mode-tab" id="radio-mode-viewers"> Viewers</label>
+            </div>
+          </div>
+
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">🔋</span>
+                <span>iOS Status Bar Settings</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Clock Time</label>
+                  <input type="text" class="form-input" id="input-phone-time" value="11:35" placeholder="e.g. 11:35">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">
+                    <span>Battery Level</span>
+                    <span class="val-badge" id="badge-battery-val">35%</span>
+                  </label>
+                  <input type="range" class="form-range" id="slider-battery" min="5" max="100" value="35">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Battery % Text</label>
+                  <div class="segmented-control" data-sync="select-battery-pct-mode">
+                    <button type="button" class="seg-btn active" data-val="show">👁️ Show</button>
+                    <button type="button" class="seg-btn" data-val="hide">🚫 Hide</button>
+                  </div>
+                  <select id="select-battery-pct-mode" class="form-select" style="display:none;">
+                    <option value="show">Show Number (35)</option>
+                    <option value="hide">Hide Number</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">
+                    <span>Signal Strength</span>
+                    <span class="val-badge" id="badge-signal-val">4 / 4</span>
+                  </label>
+                  <input type="range" class="form-range" id="slider-signal" min="0" max="4" value="4">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Network Type</label>
+                  <div class="segmented-control" data-sync="select-network-mode">
+                    <button type="button" class="seg-btn active" data-val="wifi">🛜 WiFi</button>
+                    <button type="button" class="seg-btn" data-val="5G">📶 5G</button>
+                    <button type="button" class="seg-btn" data-val="LTE">📶 LTE</button>
+                  </div>
+                  <select id="select-network-mode" class="form-select" style="display:none;">
+                    <option value="wifi">WiFi</option>
+                    <option value="5G">5G</option>
+                    <option value="LTE">LTE</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Silent Mode Bell</label>
+                  <div class="segmented-control" data-sync="select-silent-mode">
+                    <button type="button" class="seg-btn active" data-val="show">🔕 Show</button>
+                    <button type="button" class="seg-btn" data-val="hide">🔔 Hide</button>
+                  </div>
+                  <select id="select-silent-mode" class="form-select" style="display:none;">
+                    <option value="show">Show Bell (🔕)</option>
+                    <option value="hide">Hide</option>
+                  </select>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="ctrl-section-card">
-          <div class="ctrl-card-header"><span class="ctrl-card-title">🔋 Status Bar</span></div>
-          <div class="ctrl-card-body">
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Time</label>
-                <input type="text" class="form-input" id="input-phone-time" value="11:35">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Battery %</label>
-                <input type="range" class="form-range" id="slider-battery" min="5" max="100" value="35">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Battery % Text</label>
-                <select id="select-battery-pct-mode" class="form-select">
-                  <option value="show">Show Number (35)</option>
-                  <option value="hide">Hide Number</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Signal Bars</label>
-                <input type="range" class="form-range" id="slider-signal" min="0" max="4" value="4">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Network Type</label>
-                <select id="select-network-mode" class="form-select">
-                  <option value="wifi">WiFi</option>
-                  <option value="5G">5G</option>
-                  <option value="LTE">LTE</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Silent Bell (🔕)</label>
-                <select id="select-silent-mode" class="form-select">
-                  <option value="show">Show Bell (🔕)</option>
-                  <option value="hide">Hide</option>
-                </select>
+
+        <!-- Story Tab -->
+        <div class="ctrl-tab-content" id="ctrl-panel-story" style="display:none;">
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">📸</span>
+                <span>Story Media & Pill Badge</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label class="form-label">Upload Story Poster</label>
+                  <div class="custom-dropzone" id="dropzone-story-bg">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <div class="dropzone-text">
+                      <strong>Click to upload</strong> or drag & drop image
+                    </div>
+                    <span class="dropzone-hint">Supports PNG, JPG, WEBP (9:16 recommended)</span>
+                    <input type="file" accept="image/*" class="dropzone-input" id="upload-story-bg">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Story Card Views Badge</label>
+                  <input type="text" class="form-input" id="input-story-views-count" value="92" placeholder="e.g. 92">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Views Pill Visibility</label>
+                  <div class="segmented-control" data-sync="select-story-pill-visibility">
+                    <button type="button" class="seg-btn active" data-val="show">👁️ Visible</button>
+                    <button type="button" class="seg-btn" data-val="hide">🚫 Hidden</button>
+                  </div>
+                  <select id="select-story-pill-visibility" class="form-select" style="display:none;">
+                    <option value="show">Show</option>
+                    <option value="hide">Hide</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label">Viewers Tab Header Count (e.g. 92)</label>
+                  <input type="text" class="form-input" id="input-tab-viewers-count" value="92">
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Story Tab -->
-      <div class="ctrl-tab-content" id="ctrl-panel-story" style="display:none;">
-        <div class="ctrl-section-card">
-          <div class="ctrl-card-header"><span class="ctrl-card-title">📸 Story Image & Count</span></div>
-          <div class="ctrl-card-body">
-            <div class="form-grid">
-              <div class="form-group full-width">
-                <label class="form-label">Upload Story Poster</label>
-                <input type="file" accept="image/*" class="form-input" id="upload-story-bg">
+        <!-- Stats Tab -->
+        <div class="ctrl-tab-content" id="ctrl-panel-stats" style="display:none;">
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">📊</span>
+                <span>Overview & Engagement Metrics</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Total Views</label>
+                  <input type="number" class="form-input" id="input-stat-views" value="92">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Interactions</label>
+                  <input type="number" class="form-input" id="input-stat-interactions" value="2">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Profile Activity</label>
+                  <input type="number" class="form-input" id="input-stat-profile" value="0">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Accounts Reached</label>
+                  <input type="number" class="form-input" id="input-stat-reached" value="90">
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Story Card Views Badge</label>
-                <input type="text" class="form-input" id="input-story-views-count" value="92">
+            </div>
+          </div>
+
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">🍩</span>
+                <span>Followers vs Non-Followers Donut</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">
+                    <span>Followers % (Magenta)</span>
+                    <span class="val-badge" id="badge-followers-pct">97.8%</span>
+                  </label>
+                  <input type="number" step="0.1" class="form-input" id="input-donut-followers" value="97.8">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">
+                    <span>Non-Followers % (Blue)</span>
+                    <span class="val-badge" id="badge-nonfollowers-pct">2.2%</span>
+                  </label>
+                  <input type="number" step="0.1" class="form-input" id="input-donut-nonfollowers" value="2.2">
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Show Views Pill on Card</label>
-                <select id="select-story-pill-visibility" class="form-select">
-                  <option value="show">Show</option>
-                  <option value="hide">Hide</option>
-                </select>
+            </div>
+          </div>
+
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">❤️</span>
+                <span>Story Interactions Breakdown</span>
+              </span>
+            </div>
+            <div class="ctrl-card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Likes</label>
+                  <input type="number" class="form-input" id="input-stat-likes" value="2">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Replies</label>
+                  <input type="number" class="form-input" id="input-stat-replies" value="0">
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Stats Tab -->
-      <div class="ctrl-tab-content" id="ctrl-panel-stats" style="display:none;">
-        <div class="ctrl-section-card">
-          <div class="ctrl-card-header"><span class="ctrl-card-title">📊 Stats & Donut</span></div>
-          <div class="ctrl-card-body">
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Views</label>
-                <input type="number" class="form-input" id="input-stat-views" value="92">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Interactions</label>
-                <input type="number" class="form-input" id="input-stat-interactions" value="2">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Profile Activity</label>
-                <input type="number" class="form-input" id="input-stat-profile" value="0">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Followers % (magenta)</label>
-                <input type="number" step="0.1" class="form-input" id="input-donut-followers" value="97.8">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Non-followers % (blue)</label>
-                <input type="number" step="0.1" class="form-input" id="input-donut-nonfollowers" value="2.2">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Accounts Reached</label>
-                <input type="number" class="form-input" id="input-stat-reached" value="90">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Likes</label>
-                <input type="number" class="form-input" id="input-stat-likes" value="2">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Replies</label>
-                <input type="text" class="form-input" id="input-stat-replies" value="0">
-              </div>
+        <!-- Viewers Tab -->
+        <div class="ctrl-tab-content" id="ctrl-panel-viewers" style="display:none;">
+          <div class="ctrl-section-card">
+            <div class="ctrl-card-header">
+              <span class="ctrl-card-title">
+                <span class="ctrl-title-icon">👥</span>
+                <span>Viewers List Management</span>
+              </span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Viewers Tab -->
-      <div class="ctrl-tab-content" id="ctrl-panel-viewers" style="display:none;">
-        <div class="ctrl-section-card">
-          <div class="ctrl-card-header"><span class="ctrl-card-title">👀 Viewers List</span></div>
-          <div class="ctrl-card-body">
-            <div class="form-group" style="margin-bottom: 12px;">
-              <label class="form-label">Viewer Tab Count</label>
-              <input type="text" class="form-input" id="input-tab-viewers-count" value="" placeholder="e.g. 470 or leave blank">
-            </div>
-            <div class="viewers-ctrl-header">
+            <div class="ctrl-card-body">
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label">Viewer Tab Count</label>
+                <input type="text" class="form-input" id="input-tab-viewers-count" value="" placeholder="e.g. 470 or leave blank">
+              </div>
+              <div class="viewers-ctrl-header">
               <button type="button" class="btn-ctrl-primary" id="btn-add-viewer">+ Add Viewer</button>
               <button type="button" class="btn-ctrl-outline" id="btn-generate-random-viewers">⚡ Generate 10</button>
             </div>
@@ -739,19 +851,29 @@
 
         <div class="ctrl-section-card">
           <div class="ctrl-card-header">
-            <span class="ctrl-card-title">🖼️ Story Background Photo</span>
+            <span class="ctrl-card-title">
+              <span class="ctrl-title-icon">🖼️</span>
+              <span>Story Creative & Poster Photo</span>
+            </span>
           </div>
           <div class="ctrl-card-body">
             <div class="form-group">
               <label class="form-label">Upload Custom Story Photo</label>
-              <input type="file" class="form-input" id="sm-input-bg-upload" accept="image/*">
+              <div class="custom-dropzone" id="sm-dropzone-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <div class="dropzone-text">
+                  <strong>Click to upload</strong> or drag & drop photo
+                </div>
+                <span class="dropzone-hint">Supports PNG, JPG, WEBP (9:16 high-resolution)</span>
+                <input type="file" class="dropzone-input" id="sm-input-bg-upload" accept="image/*">
+              </div>
             </div>
-            <div class="form-group" style="margin-top: 8px;">
-              <label class="form-label">Quick Sample Photos</label>
+            <div class="form-group" style="margin-top: 14px;">
+              <label class="form-label">Sample Brand Creatives</label>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-disco">DISCO Poster</button>
-                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-store">Reliance Store</button>
-                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-walkin1">Walkin Demo 1</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-disco">🎉 DISCO Poster</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-store">🏬 Reliance Store</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-walkin1">🚶 Walkin Demo 1</button>
               </div>
             </div>
           </div>
@@ -759,7 +881,10 @@
 
         <div class="ctrl-section-card">
           <div class="ctrl-card-header">
-            <span class="ctrl-card-title">✍️ Story Caption & Tags</span>
+            <span class="ctrl-card-title">
+              <span class="ctrl-title-icon">✍️</span>
+              <span>Story Captions, Tags & Positioning</span>
+            </span>
           </div>
           <div class="ctrl-card-body">
             <div class="form-group">
@@ -767,23 +892,26 @@
               <textarea class="form-input" id="sm-input-caption" rows="3" placeholder="Type caption or tags like @reliance_digital...">Have you spotted DISCO yet? 👀🔥
 Your nearest @reliance_digital is calling!</textarea>
             </div>
-            <div class="form-group" style="margin-top: 6px;">
+            <div class="form-group" style="margin-top: 10px;">
               <label class="form-checkbox-label">
                 <input type="checkbox" id="sm-toggle-pill-backdrop">
                 <span>Semi-Opaque Pill Backdrop (Best for busy photos)</span>
               </label>
             </div>
-            <div class="form-group" style="margin-top: 10px;">
+            <div class="form-group" style="margin-top: 14px;">
               <label class="form-label">Safe Zone Presets:</label>
-              <div style="display:flex; gap:8px; margin-bottom:8px;">
+              <div style="display:flex; gap:8px; margin-bottom:10px;">
                 <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-top">Top (120px)</button>
                 <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-upper">Upper (200px)</button>
                 <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-center">Center (320px)</button>
               </div>
-              <label class="form-label">Custom Y-Position: <span id="sm-val-caption-y">130px</span></label>
-              <input type="range" min="80" max="450" value="130" id="sm-input-caption-y" style="width:100%;">
+              <label class="form-label">
+                <span>Custom Y-Position:</span>
+                <span class="val-badge" id="sm-val-caption-y">130px</span>
+              </label>
+              <input type="range" class="form-range" min="80" max="450" value="130" id="sm-input-caption-y">
             </div>
-            <div class="form-group" style="margin-top: 10px;">
+            <div class="form-group" style="margin-top: 14px;">
               <label class="form-label">Floating Tag (e.g. @vigorspace)</label>
               <input type="text" class="form-input" id="sm-input-floating-tag" value="@vigorspace">
             </div>
@@ -792,7 +920,10 @@ Your nearest @reliance_digital is calling!</textarea>
 
         <div class="ctrl-section-card">
           <div class="ctrl-card-header">
-            <span class="ctrl-card-title">🎵 Header & Audio Info</span>
+            <span class="ctrl-card-title">
+              <span class="ctrl-title-icon">🎵</span>
+              <span>Header Audio, Status & Reactions</span>
+            </span>
           </div>
           <div class="ctrl-card-body">
             <div class="form-grid-2">
@@ -806,23 +937,23 @@ Your nearest @reliance_digital is calling!</textarea>
               </div>
             </div>
 
-            <div class="form-group" style="margin-top:10px;">
+            <div class="form-group" style="margin-top:14px;">
               <label class="form-checkbox-label">
                 <input type="checkbox" id="sm-toggle-music" checked>
                 <span>Enable Music / Song Ticker</span>
               </label>
             </div>
-            <div class="form-group" style="margin-top:6px;">
+            <div class="form-group" style="margin-top:8px;">
               <label class="form-label">Song Title & Artist</label>
               <input type="text" class="form-input" id="sm-input-music-title" value="The Desperados · Let's Have Some Fun Alt">
             </div>
 
-            <div class="form-group" style="margin-top:10px;">
+            <div class="form-group" style="margin-top:14px;">
               <label class="form-label">iOS Battery Level %</label>
               <input type="number" min="1" max="100" class="form-input" id="sm-input-battery" value="73">
             </div>
 
-            <div class="form-grid-2" style="margin-top:10px;">
+            <div class="form-grid-2" style="margin-top:14px;">
               <div class="form-group">
                 <label class="form-checkbox-label">
                   <input type="checkbox" id="sm-toggle-reactions" checked>
