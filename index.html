@@ -628,8 +628,8 @@
 
               <!-- Action Icons Row -->
               <div class="story-bottom-action-bar">
-                <!-- 1. Activity (Viewer Avatar Stack) -->
-                <button type="button" class="story-bottom-action-btn">
+                <!-- 1. Activity (Viewer Avatar Stack) - Pinned Left with larger gap -->
+                <button type="button" class="story-bottom-action-btn story-btn-activity">
                   <div class="story-activity-avatar-stack">
                     <img src="assets/avatar.png" class="story-activity-avatar" onerror="this.style.background='#ff007f'">
                     <img src="assets/avatar.png" class="story-activity-avatar" onerror="this.style.background='#0095f6'">
@@ -638,37 +638,47 @@
                   <span class="btn-label">Activity</span>
                 </button>
 
-                <!-- 2. Share on... -->
-                <button type="button" class="story-bottom-action-btn">
-                  <div class="story-bottom-icon">
-                    <img src="assets/story_icon_share_on.png" alt="Share on..." class="story-action-custom-icon" style="height: 21px; width: auto; object-fit: contain;">
-                  </div>
-                  <span class="btn-label">Share on...</span>
-                </button>
+                <!-- Right Clustered Actions (Share on..., Mention, Send, More) with tighter gaps -->
+                <div class="story-bottom-action-group-right">
+                  <!-- 2. Share on... -->
+                  <button type="button" class="story-bottom-action-btn">
+                    <div class="story-bottom-icon">
+                      <img src="assets/story_icon_share_on.png" alt="Share on..." class="story-action-custom-icon" style="height: 22px; width: auto; object-fit: contain;">
+                    </div>
+                    <span class="btn-label">Share on...</span>
+                  </button>
 
-                <!-- 3. Mention -->
-                <button type="button" class="story-bottom-action-btn">
-                  <div class="story-bottom-icon">
-                    <img src="assets/story_icon_mention.png" alt="Mention" class="story-action-custom-icon" style="height: 21px; width: auto; object-fit: contain;">
-                  </div>
-                  <span class="btn-label">Mention</span>
-                </button>
+                  <!-- 3. Mention -->
+                  <button type="button" class="story-bottom-action-btn">
+                    <div class="story-bottom-icon">
+                      <img src="assets/story_icon_mention.png" alt="Mention" class="story-action-custom-icon" style="height: 22px; width: auto; object-fit: contain;">
+                    </div>
+                    <span class="btn-label">Mention</span>
+                  </button>
 
-                <!-- 4. Send -->
-                <button type="button" class="story-bottom-action-btn">
-                  <div class="story-bottom-icon">
-                    <img src="assets/story_icon_share.png" alt="Send" class="story-action-custom-icon" style="height: 21px; width: auto; object-fit: contain;">
-                  </div>
-                  <span class="btn-label">Send</span>
-                </button>
+                  <!-- 4. Send -->
+                  <button type="button" class="story-bottom-action-btn">
+                    <div class="story-bottom-icon">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="story-action-custom-icon">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                      </svg>
+                    </div>
+                    <span class="btn-label">Send</span>
+                  </button>
 
-                <!-- 5. More -->
-                <button type="button" class="story-bottom-action-btn">
-                  <div class="story-bottom-icon">
-                    <img src="assets/story_icon_more.png" alt="More" class="story-action-custom-icon" style="height: 19px; width: auto; object-fit: contain;">
-                  </div>
-                  <span class="btn-label">More</span>
-                </button>
+                  <!-- 5. More -->
+                  <button type="button" class="story-bottom-action-btn">
+                    <div class="story-bottom-icon">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff" class="story-action-custom-icon">
+                        <circle cx="5" cy="12" r="1.6"/>
+                        <circle cx="12" cy="12" r="1.6"/>
+                        <circle cx="19" cy="12" r="1.6"/>
+                      </svg>
+                    </div>
+                    <span class="btn-label">More</span>
+                  </button>
+                </div>
               </div>
 
             </div><!-- /story-bottom-chrome -->

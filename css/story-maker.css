@@ -430,12 +430,24 @@
 
 /* Action Icons Row (Activity / Share on... / Mention / Send / More) */
 .story-bottom-action-bar {
-  padding: 0 16px 16px;
+  padding: 0 16px 14px 18px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
+}
+
+.story-btn-activity {
+  flex-shrink: 0;
+}
+
+/* Right Group: Share on..., Mention, Send, More (clustered with tight gaps) */
+.story-bottom-action-group-right {
+  display: flex;
+  align-items: flex-end;
+  gap: 17px;
+  flex-shrink: 0;
 }
 
 .story-bottom-action-btn {
@@ -445,7 +457,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   cursor: pointer;
   padding: 0;
 }
@@ -460,14 +472,14 @@
 /* 9. AVATAR STACK (Activity viewers icons) */
 .story-activity-avatar-stack {
   position: relative;
-  width: 32px;
-  height: 20px;
+  width: 34px;
+  height: 22px;
   display: flex;
   align-items: center;
 }
 .story-activity-avatar {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   border-radius: 50%;
   border: 1.5px solid #000000;
   object-fit: cover;
@@ -475,8 +487,8 @@
   top: 1px;
 }
 .story-activity-avatar:nth-child(1) { left: 0; z-index: 3; }
-.story-activity-avatar:nth-child(2) { left: 7px; z-index: 2; }
-.story-activity-avatar:nth-child(3) { left: 14px; z-index: 1; }
+.story-activity-avatar:nth-child(2) { left: 8px; z-index: 2; }
+.story-activity-avatar:nth-child(3) { left: 16px; z-index: 1; }
 
 .story-bottom-icon {
   width: 22px;
