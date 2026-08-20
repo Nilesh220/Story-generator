@@ -7,7 +7,7 @@
   <meta name="description" content="Generate 100% pixel-perfect Instagram Story Views screenshots.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/instagram-story.css">
   <link rel="stylesheet" href="css/story-maker.css">
@@ -200,7 +200,7 @@
                 </button>
               </div>
               <div class="ig-tab-underline"></div>
-            </div>         </div>
+            </div><!-- /ig-tabs-row -->
 
             <!-- Sheet Content -->
             <div class="ig-sheet-body">
@@ -314,13 +314,13 @@
                 <ul class="viewers-ul" id="mockup-viewers-list"></ul>
               </div>
 
-            </div>
+            </div><!-- /ig-scroll-area -->
 
             <div class="ios-home-indicator"></div>
-          </div>
+          </div><!-- /ig-main-sheet -->
 
-        </div>
-      </div>
+        </div><!-- /iphone-phone-frame -->
+      </div><!-- /phone-mockup-wrapper -->
 
       <div class="export-card">
         <button type="button" class="btn-download-primary" id="btn-download-image">
@@ -685,6 +685,12 @@
 
           </div><!-- /story-maker-phone-frame -->
         </div>
+
+        <div class="export-card">
+          <button type="button" class="btn-download-primary" id="btn-download-story-png">
+            ↓ Download Story Screenshot (3x Retina)
+          </button>
+        </div>
       </aside>
 
 
@@ -760,23 +766,23 @@ Your nearest @reliance_digital is calling!</textarea>
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top:10px;">
               <label class="form-checkbox-label">
                 <input type="checkbox" id="sm-toggle-music" checked>
                 <span>Enable Music / Song Ticker</span>
               </label>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top:6px;">
               <label class="form-label">Song Title & Artist</label>
               <input type="text" class="form-input" id="sm-input-music-title" value="The Desperados · Let's Have Some Fun Alt">
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top:10px;">
               <label class="form-label">iOS Battery Level %</label>
               <input type="number" min="1" max="100" class="form-input" id="sm-input-battery" value="73">
             </div>
 
-            <div class="form-grid-2">
+            <div class="form-grid-2" style="margin-top:10px;">
               <div class="form-group">
                 <label class="form-checkbox-label">
                   <input type="checkbox" id="sm-toggle-reactions" checked>
@@ -791,10 +797,6 @@ Your nearest @reliance_digital is calling!</textarea>
               </div>
             </div>
           </div>
-        </div>
-
-        <div style="margin-top:20px;">
-          <button type="button" class="btn-ctrl-primary" id="btn-download-story-png" style="width:100%; height:48px; font-size:15px;">📥 Download Story Screenshot (HD)</button>
         </div>
 
       </section>

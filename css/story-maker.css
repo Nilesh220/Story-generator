@@ -2,50 +2,6 @@
    INSTAGRAM STORY MAKER - PIXEL-PERFECT 9:16 NATIVE STORY ENGINE
    ========================================================================== */
 
-/* Top Mode Switcher */
-.mode-switcher-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 4px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-}
-.mode-switch-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-.mode-switch-btn.active {
-  background: var(--primary);
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
-}
-.mode-switch-btn:hover:not(.active) {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-/* Container Visibility */
-.workspace-mode {
-  width: 100%;
-  gap: 28px;
-  display: none;
-}
-.workspace-mode.active-mode {
-  display: flex !important;
-}
-
 /* ==========================================================================
    1. ROOT CONTAINER / VIEWPORT (Strict 9:16 Aspect Ratio)
    ========================================================================== */
