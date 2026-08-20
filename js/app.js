@@ -61,13 +61,22 @@
 
   function applyTheme(theme) {
     const frame = document.getElementById('iphone-phone-frame');
+    const isDark = theme === 'dark';
     if (frame) {
-      if (theme === 'dark') {
+      if (isDark) {
         frame.classList.add('theme-dark');
       } else {
         frame.classList.remove('theme-dark');
       }
     }
+
+    const viewersIcon = document.getElementById('icon-tab-viewers');
+    const boostIcon   = document.getElementById('icon-tab-boost');
+    const trashIcon   = document.getElementById('icon-tab-trash');
+    
+    if (viewersIcon) viewersIcon.src = isDark ? 'assets/user_icon_viewers_white.png' : 'assets/user_icon_viewers_black.png';
+    if (boostIcon)   boostIcon.src   = isDark ? 'assets/user_icon_boost_white.png'   : 'assets/user_icon_boost_black.png';
+    if (trashIcon)   trashIcon.src   = isDark ? 'assets/user_icon_trash_white.png'   : 'assets/user_icon_trash_black.png';
   }
 
   // --- POPULATE INPUTS ---

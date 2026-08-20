@@ -378,37 +378,40 @@
   gap: 16px;
 }
 
-/* Inline SVG icons (100% native vector & html2canvas support) */
-.ig-svg-icon {
+/* User Uploaded Tab Icons */
+.ig-user-tab-icon {
   display: inline-block;
   vertical-align: middle;
+  object-fit: contain;
   pointer-events: none;
 }
+.ig-user-icon-viewers {
+  width: 20px;
+  height: 20px;
+}
+.ig-user-icon-boost {
+  width: 19px;
+  height: 19px;
+}
+.ig-user-icon-trash {
+  width: 18px;
+  height: 18px;
+}
 
-.ig-tab-button .ig-svg-icon {
-  color: #8e8e93;
+.ig-tab-button.active .ig-user-icon-viewers {
+  filter: invert(36%) sepia(97%) saturate(1487%) hue-rotate(193deg) brightness(98%) contrast(102%);
 }
-.ig-tab-button.active .ig-svg-icon {
-  color: var(--ig-blue);
-}
-.iphone-frame.theme-dark .ig-tab-button .ig-svg-icon {
-  color: #ffffff;
-}
-.iphone-frame.theme-dark .ig-tab-button.active .ig-svg-icon {
-  color: var(--ig-blue);
+.iphone-frame.theme-dark .ig-tab-button.active .ig-user-icon-viewers {
+  filter: invert(36%) sepia(97%) saturate(1487%) hue-rotate(193deg) brightness(98%) contrast(102%);
 }
 
 .ig-tab-boost,
 .ig-tab-trash {
-  color: #8e8e93;
-}
-.iphone-frame.theme-dark .ig-tab-boost,
-.iphone-frame.theme-dark .ig-tab-trash {
-  color: #ffffff;
+  opacity: 0.85;
 }
 .ig-tab-boost:hover,
 .ig-tab-trash:hover {
-  color: var(--ig-text);
+  opacity: 1;
 }
 
 /* Dynamic Blue underline */
