@@ -378,42 +378,41 @@
   gap: 16px;
 }
 
-/* User Uploaded Icons (via CSS Masks for dynamic coloring) */
-.ig-user-icon {
+/* User Uploaded Icons (via direct Base64 img for 100% canvas & html2canvas support) */
+.ig-user-img-icon {
   display: inline-block;
-  background-color: currentColor;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
   vertical-align: middle;
+  object-fit: contain;
+  pointer-events: none;
 }
-.ig-icon-viewers {
+.ig-img-viewers {
   width: 20px;
   height: 20px;
-  -webkit-mask-image: url('../assets/icon_viewers_trans.png');
-  mask-image: url('../assets/icon_viewers_trans.png');
+  filter: brightness(0) invert(1);
 }
-.ig-icon-boost {
+.ig-img-boost {
   width: 21px;
   height: 20px;
-  -webkit-mask-image: url('../assets/icon_boost_trans.png');
-  mask-image: url('../assets/icon_boost_trans.png');
+  filter: brightness(0) invert(1);
 }
-.ig-icon-trash {
+.ig-img-trash {
   width: 19px;
   height: 20px;
-  -webkit-mask-image: url('../assets/icon_trash_trans.png');
-  mask-image: url('../assets/icon_trash_trans.png');
+  filter: brightness(0) invert(1);
 }
-.ig-icon-viewers-pill {
+.ig-img-viewers-pill {
   width: 13px;
   height: 13px;
-  background-color: #ffffff;
-  -webkit-mask-image: url('../assets/icon_viewers_trans.png');
-  mask-image: url('../assets/icon_viewers_trans.png');
+  filter: brightness(0) invert(1);
+}
+
+.iphone-frame:not(.theme-dark) .ig-img-viewers,
+.iphone-frame:not(.theme-dark) .ig-img-boost,
+.iphone-frame:not(.theme-dark) .ig-img-trash {
+  filter: brightness(0) opacity(0.55);
+}
+.ig-tab-button.active .ig-img-viewers {
+  filter: invert(48%) sepia(85%) saturate(2250%) hue-rotate(190deg) brightness(100%) contrast(105%);
 }
 
 .ig-tab-boost,
