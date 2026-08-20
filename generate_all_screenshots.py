@@ -41,7 +41,7 @@ crop_styles = [
     {'name': 'below_legend',  'min_ratio': 2.20, 'max_ratio': 2.28}
 ]
 
-def generate_batch(poster_image_path='assets/reliance_digital_story.png'):
+def generate_batch(poster_image_path='assets/story_poster.jpg'):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -56,7 +56,9 @@ def generate_batch(poster_image_path='assets/reliance_digital_story.png'):
         results = []
 
         for i, orig in enumerate(raw_items, 1):
-            reduced_views = round(orig * 0.90)
+            # Reduce 10-12 percent count
+            reduction_factor = random.uniform(0.88, 0.90)
+            reduced_views = max(1, round(orig * reduction_factor))
 
             time_str = times_pool[(i - 1) % len(times_pool)]
             silent = (i % 2 == 1) or (i % 5 == 0)
