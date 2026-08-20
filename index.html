@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/instagram-story.css">
+  <link rel="stylesheet" href="css/story-maker.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -22,15 +23,23 @@
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
         </svg>
-        <h1>InstaStory Generator <span class="brand-badge">EXACT MATCH</span></h1>
+        <h1>InstaStudio <span class="brand-badge">PRO</span></h1>
       </div>
+
+      <!-- Mode Switcher -->
+      <div class="mode-switcher-wrap">
+        <button type="button" class="mode-switch-btn active" id="btn-mode-views">📊 Story Insights & Views</button>
+        <button type="button" class="mode-switch-btn" id="btn-mode-story">📸 Story Post Maker</button>
+      </div>
+
       <button type="button" class="btn-header-reset" id="btn-reset-defaults">↺ Reset</button>
     </div>
   </header>
 
-  <section class="presets-banner">
+  <!-- PRESETS BANNER FOR VIEWS GENERATOR -->
+  <section class="presets-banner" id="presets-views-banner">
     <div class="presets-container">
-      <span class="presets-label">Presets:</span>
+      <span class="presets-label">Views Presets:</span>
       <div class="presets-pill-list">
         <button type="button" class="preset-btn active" data-preset="standard">92 Views</button>
         <button type="button" class="preset-btn" data-preset="preset68">68 Views</button>
@@ -42,7 +51,22 @@
     </div>
   </section>
 
+  <!-- PRESETS BANNER FOR STORY MAKER -->
+  <section class="presets-banner" id="presets-story-banner" style="display:none;">
+    <div class="presets-container">
+      <span class="presets-label">Story Presets:</span>
+      <div class="presets-pill-list">
+        <button type="button" class="preset-btn active" data-story-preset="disco">DISCO Sale (@reliance_digital)</button>
+        <button type="button" class="preset-btn" data-story-preset="sale">Massive Sale (@reliance_digital)</button>
+        <button type="button" class="preset-btn" data-story-preset="walkin">Store Walk-in (@vigorspace)</button>
+      </div>
+    </div>
+  </section>
+
   <main class="app-workspace">
+
+    <!-- WORKSPACE MODE 1: STORY VIEWS GENERATOR -->
+    <div class="workspace-mode active-mode" id="workspace-views-generator">
 
     <!-- PHONE PREVIEW -->
     <aside class="preview-pane">
@@ -110,15 +134,10 @@
             <!-- Story Carousel -->
             <div class="ig-story-carousel-wrap">
               <div class="story-card-active" id="mockup-story-card"
-                style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&auto=format&fit=crop&q=80');">
+                style="background-image: url('assets/reliance_digital_story.png');">
                 <!-- Bottom Viewers Count on Story Card -->
                 <div class="story-card-viewers-pill" id="mockup-story-views-pill">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="8" r="3.5"/>
-                    <path d="M2.5 19c0-3.2 2.9-5.5 6.5-5.5s6.5 2.3 6.5 5.5"/>
-                    <path d="M14.5 4.8a3.5 3.5 0 0 1 2 3.2c0 1.2-.6 2.3-1.5 2.9"/>
-                    <path d="M17.5 14c2.2.6 4 2.2 4 5"/>
-                  </svg>
+                  <span class="ig-user-icon ig-icon-viewers-pill"></span>
                   <span class="pill-count-text" id="mockup-story-views-count">479</span>
                 </div>
               </div>
@@ -135,36 +154,29 @@
 
             <!-- Tabs -->
             <div class="ig-tabs-row">
-              <!-- Outline Bar chart icon -->
+              <!-- Outline 4-Bar Chart Icon (Active Insights) -->
               <button class="ig-tab-button active" id="mockup-tab-stats" title="Insights">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2.5" y="11.5" width="4.5" height="9.5" rx="1"/>
-                  <rect x="9.5" y="4" width="4.5" height="17" rx="1"/>
-                  <rect x="16.5" y="8" width="4.5" height="13" rx="1"/>
+                <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4.5" y1="20" x2="4.5" y2="14"/>
+                  <line x1="9.5" y1="20" x2="9.5" y2="10"/>
+                  <line x1="14.5" y1="20" x2="14.5" y2="6"/>
+                  <line x1="19.5" y1="20" x2="19.5" y2="3"/>
                 </svg>
               </button>
-              <!-- Exact Outline Dual-person icon with count -->
+              <!-- Exact User Uploaded Dual-Person Icon with Count -->
               <button class="ig-tab-button" id="mockup-tab-viewers" title="Viewers">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <!-- Front person head -->
-                  <circle cx="9" cy="8" r="3.5"/>
-                  <!-- Front person body -->
-                  <path d="M2.5 19c0-3.2 2.9-5.5 6.5-5.5s6.5 2.3 6.5 5.5"/>
-                  <!-- Back person head -->
-                  <path d="M14.5 4.8a3.5 3.5 0 0 1 2 3.2c0 1.2-.6 2.3-1.5 2.9"/>
-                  <!-- Back person shoulder -->
-                  <path d="M17.5 14c2.2.6 4 2.2 4 5"/>
-                </svg>
+                <span class="ig-user-icon ig-icon-viewers"></span>
                 <span class="ig-tab-viewers-count" id="mockup-tab-viewers-count">479</span>
               </button>
-              <!-- Trash on right -->
-              <button class="ig-tab-button ig-tab-trash" id="btn-tab-trash" title="Delete">
-                <!-- Outline Trash Icon -->
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"/>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                </svg>
-              </button>
+              <!-- Right Actions: Exact User Uploaded Boost Badge & Trash Can -->
+              <div class="ig-tab-right-group">
+                <button class="ig-tab-button ig-tab-boost" id="btn-tab-boost" title="Boost">
+                  <span class="ig-user-icon ig-icon-boost"></span>
+                </button>
+                <button class="ig-tab-button ig-tab-trash" id="btn-tab-trash" title="Delete">
+                  <span class="ig-user-icon ig-icon-trash"></span>
+                </button>
+              </div>
               <div class="ig-tab-underline"></div>
             </div>
 
@@ -475,9 +487,305 @@
 
     </section>
 
+    </div><!-- /workspace-views-generator -->
+
+
+    <!-- ==========================================================================
+         WORKSPACE MODE 2: INSTAGRAM STORY POST MAKER
+         ========================================================================== -->
+    <div class="workspace-mode" id="workspace-story-maker">
+
+      <!-- LEFT PREVIEW PANE -->
+      <aside class="preview-pane">
+        <div class="preview-toolbar">
+          <span style="font-size:12px; font-weight:600; color:var(--text-muted);">📸 Story Post Mockup (9:16)</span>
+        </div>
+
+        <div class="phone-mockup-wrapper">
+          <div class="iphone-frame" id="story-maker-phone-frame">
+
+            <!-- LAYER 1: Background Creative / Source Photo -->
+            <div class="story-photo-layer">
+              <img src="assets/sample_story_disco.jpg" alt="Story Background" id="story-bg-img" class="story-bg-image">
+            </div>
+
+            <!-- LAYER 2: Top Gradient Scrim -->
+            <div class="story-scrim-top"></div>
+
+            <!-- LAYER 3: Bottom Gradient Scrim -->
+            <div class="story-scrim-bottom"></div>
+
+            <!-- LAYER 4: Interactive Captions, Tags & Stickers -->
+            <div class="story-interactive-layer">
+              <!-- Main Caption Box -->
+              <div class="story-caption-box" id="story-caption-display" style="top: 130px;">
+                Have you spotted DISCO yet? 👀🔥<br>Your nearest <u>@reliance_digital</u> is calling!
+              </div>
+
+              <!-- Floating Bottom Tag -->
+              <div class="story-floating-tag" id="story-floating-tag-display" style="display:block;">
+                <u>@vigorspace</u>
+              </div>
+
+              <!-- Floating Emoji Reactions -->
+              <div class="story-floating-reactions" id="story-reactions-display" style="display:flex;">
+                <span>💖</span>
+                <span>🧡</span>
+              </div>
+            </div>
+
+            <!-- LAYER 5: Top Story Player Header -->
+            <div class="story-header-layer">
+              <!-- Progress Line -->
+              <div class="story-progress-bar-wrap">
+                <div class="story-progress-segment active"></div>
+              </div>
+
+              <!-- Author & Audio Info -->
+              <div class="story-author-row">
+                <div class="story-author-left">
+                  <div class="story-author-avatar-wrap">
+                    <img src="assets/avatar.png" alt="Avatar" class="story-author-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\' fill=\'%23555\'><circle cx=\'16\' cy=\'16\' r=\'16\'/><circle cx=\'16\' cy=\'12\' r=\'6\' fill=\'%23fff\'/><path d=\'M6 28c0-6 4-9 10-9s10 3 10 9\' fill=\'%23fff\'/></svg>'">
+                    <div class="story-avatar-plus-badge">+</div>
+                  </div>
+                  <div class="story-author-info">
+                    <div class="story-author-title-line">
+                      <span class="story-author-name">Your story</span>
+                      <span class="story-time-elapsed" id="story-time-elapsed-display">12h</span>
+                    </div>
+                    <!-- Music Ticker -->
+                    <div class="story-audio-ticker" id="story-audio-ticker-display" style="display:flex;">
+                      <svg class="story-audio-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                      <span class="story-audio-title" id="story-audio-title-display">The Desperados · Let's Have Some Fun Alt</span>
+                      <span class="story-audio-chevron">&gt;</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Close X -->
+                <button type="button" class="story-close-btn" title="Close">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- LAYER 6: iOS Status Bar -->
+            <div class="story-ios-status-bar" id="story-maker-status-bar">
+              <span class="story-status-time" id="sm-status-time">11:04</span>
+              <div class="story-status-icons">
+                <!-- Cellular Signal 4 Bars -->
+                <svg viewBox="0 0 18 12" width="17" height="11" fill="#ffffff">
+                  <rect x="0" y="9" width="3" height="3" rx="0.5"/>
+                  <rect x="4.5" y="6" width="3" height="6" rx="0.5"/>
+                  <rect x="9" y="3" width="3" height="9" rx="0.5"/>
+                  <rect x="13.5" y="0" width="3" height="12" rx="0.5"/>
+                </svg>
+                <!-- WiFi Glyph -->
+                <svg viewBox="0 0 16 12" width="15" height="11" fill="#ffffff" id="sm-status-wifi-icon">
+                  <path d="M8 2.5C10.7 2.5 13.2 3.6 15 5.4L13.8 6.6C12.3 5.1 10.2 4.2 8 4.2C5.8 4.2 3.7 5.1 2.2 6.6L1 5.4C2.8 3.6 5.3 2.5 8 2.5ZM8 6C9.8 6 11.4 6.7 12.6 7.9L11.4 9.1C10.5 8.2 9.3 7.7 8 7.7C6.7 7.7 5.5 8.2 4.6 9.1L3.4 7.9C4.6 6.7 6.2 6 8 6ZM8 9.5C8.9 9.5 9.7 9.8 10.3 10.4L8 12.7L5.7 10.4C6.3 9.8 7.1 9.5 8 9.5Z"/>
+                </svg>
+                <!-- Battery Capsule -->
+                <div class="ios-battery-capsule">
+                  <div class="ios-battery-border">
+                    <div class="ios-battery-level" id="sm-status-battery-level" style="width: 73%;"></div>
+                  </div>
+                  <div class="ios-battery-cap"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LAYER 7: Bottom UI Chrome (Rendered Last, Always on Top) -->
+            <div class="story-bottom-chrome">
+
+              <!-- "Say something..." Pill -->
+              <div class="story-say-something-container" id="story-say-something-container" style="display:block;">
+                <div class="story-say-something-bar">
+                  Say something...
+                </div>
+              </div>
+
+              <!-- Action Icons Row -->
+              <div class="story-bottom-action-bar">
+                <!-- 1. Activity (Viewer Avatar Stack) -->
+                <button type="button" class="story-bottom-action-btn">
+                  <div class="story-activity-avatar-stack">
+                    <img src="assets/avatar.png" class="story-activity-avatar" onerror="this.style.background='#ff007f'">
+                    <img src="assets/avatar.png" class="story-activity-avatar" onerror="this.style.background='#0095f6'">
+                    <img src="assets/avatar.png" class="story-activity-avatar" onerror="this.style.background='#ffb703'">
+                  </div>
+                  <span class="btn-label">Activity</span>
+                </button>
+
+                <!-- 2. Share on... -->
+                <button type="button" class="story-bottom-action-btn">
+                  <div class="story-bottom-icon">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M8.5 14.5A5.5 5.5 0 0 0 14 16h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4a5.5 5.5 0 0 0-5.5 5.5v1z"/>
+                    </svg>
+                  </div>
+                  <span class="btn-label">Share on...</span>
+                </button>
+
+                <!-- 3. Mention -->
+                <button type="button" class="story-bottom-action-btn">
+                  <div class="story-bottom-icon">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/>
+                    </svg>
+                  </div>
+                  <span class="btn-label">Mention</span>
+                </button>
+
+                <!-- 4. Send -->
+                <button type="button" class="story-bottom-action-btn">
+                  <div class="story-bottom-icon">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  </div>
+                  <span class="btn-label">Send</span>
+                </button>
+
+                <!-- 5. More -->
+                <button type="button" class="story-bottom-action-btn">
+                  <div class="story-bottom-icon">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff">
+                      <circle cx="5" cy="12" r="1.8"/>
+                      <circle cx="12" cy="12" r="1.8"/>
+                      <circle cx="19" cy="12" r="1.8"/>
+                    </svg>
+                  </div>
+                  <span class="btn-label">More</span>
+                </button>
+              </div>
+
+            </div><!-- /story-bottom-chrome -->
+
+          </div><!-- /story-maker-phone-frame -->
+        </div>
+      </aside>
+
+
+      <!-- RIGHT CONTROLS PANE -->
+      <section class="control-pane">
+
+        <div class="ctrl-section-card">
+          <div class="ctrl-card-header">
+            <span class="ctrl-card-title">🖼️ Story Background Photo</span>
+          </div>
+          <div class="ctrl-card-body">
+            <div class="form-group">
+              <label class="form-label">Upload Custom Story Photo</label>
+              <input type="file" class="form-input" id="sm-input-bg-upload" accept="image/*">
+            </div>
+            <div class="form-group" style="margin-top: 8px;">
+              <label class="form-label">Quick Sample Photos</label>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-disco">DISCO Poster</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-store">Reliance Store</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-sample-walkin1">Walkin Demo 1</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-section-card">
+          <div class="ctrl-card-header">
+            <span class="ctrl-card-title">✍️ Story Caption & Tags</span>
+          </div>
+          <div class="ctrl-card-body">
+            <div class="form-group">
+              <label class="form-label">Main Caption (Auto-underlines @mentions)</label>
+              <textarea class="form-input" id="sm-input-caption" rows="3" placeholder="Type caption or tags like @reliance_digital...">Have you spotted DISCO yet? 👀🔥
+Your nearest @reliance_digital is calling!</textarea>
+            </div>
+            <div class="form-group" style="margin-top: 6px;">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="sm-toggle-pill-backdrop">
+                <span>Semi-Opaque Pill Backdrop (Best for busy photos)</span>
+              </label>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">Safe Zone Presets:</label>
+              <div style="display:flex; gap:8px; margin-bottom:8px;">
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-top">Top (120px)</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-upper">Upper (200px)</button>
+                <button type="button" class="btn-ctrl-outline btn-sm" id="btn-safe-center">Center (320px)</button>
+              </div>
+              <label class="form-label">Custom Y-Position: <span id="sm-val-caption-y">130px</span></label>
+              <input type="range" min="80" max="450" value="130" id="sm-input-caption-y" style="width:100%;">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label class="form-label">Floating Tag (e.g. @vigorspace)</label>
+              <input type="text" class="form-input" id="sm-input-floating-tag" value="@vigorspace">
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-section-card">
+          <div class="ctrl-card-header">
+            <span class="ctrl-card-title">🎵 Header & Audio Info</span>
+          </div>
+          <div class="ctrl-card-body">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Time Elapsed</label>
+                <input type="text" class="form-input" id="sm-input-time-elapsed" value="12h">
+              </div>
+              <div class="form-group">
+                <label class="form-label">iOS Status Bar Time</label>
+                <input type="text" class="form-input" id="sm-input-time" value="11:04">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="sm-toggle-music" checked>
+                <span>Enable Music / Song Ticker</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Song Title & Artist</label>
+              <input type="text" class="form-input" id="sm-input-music-title" value="The Desperados · Let's Have Some Fun Alt">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">iOS Battery Level %</label>
+              <input type="number" min="1" max="100" class="form-input" id="sm-input-battery" value="73">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="sm-toggle-reactions" checked>
+                  <span>Show Heart Reactions 💖 🧡</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="sm-toggle-say-something" checked>
+                  <span>Show "Say something..."</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;">
+          <button type="button" class="btn-ctrl-primary" id="btn-download-story-png" style="width:100%; height:48px; font-size:15px;">📥 Download Story Screenshot (HD)</button>
+        </div>
+
+      </section>
+
+    </div><!-- /workspace-story-maker -->
+
   </main>
 
   <script src="js/presets.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/story-maker.js"></script>
 </body>
 </html>
