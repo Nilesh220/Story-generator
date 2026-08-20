@@ -488,3 +488,10 @@
 .story-bottom-icon svg {
   display: block;
 }
+.story-action-custom-icon {
+  display: block;
+  max-height: 22px;
+  max-width: 26px;
+  object-fit: contain;
+  pointer-events: none;
+}
